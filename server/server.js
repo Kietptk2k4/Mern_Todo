@@ -14,6 +14,10 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 
+app.get("/", (req, res) => {
+  res.send("✅ TaskNest Backend running!");
+});
+
 // routes
 app.use("/api/todos", todoRoutes);
 
