@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "../api";
 
 export default function TodoForm({ onAdded }) {
   const [title, setTitle] = useState("");
@@ -7,11 +7,7 @@ export default function TodoForm({ onAdded }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:5000/api/todos", {
-      title,
-      status: false,
-      dueDate,
-    });
+    await api.post("/todos", { title, status: false, dueDate });
     setTitle("");
     setDueDate("");
     if (onAdded) onAdded();
