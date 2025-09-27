@@ -14,12 +14,21 @@ export const createTodo = async (req, res) => {
 };
 
 // READ (with filter + pagination)
+// READ (with filter + pagination)
 export const getTodos = async (req, res) => {
   try {
     const { status, from, to, page = 1, limit = 5 } = req.query;
 
     const query = {};
-    if (status !== undefined) query.status = status === "true";
+
+    // Chỉ filter khi có status rõ ràng
+    if (status === "true") {
+      query.status = true;
+    } else if (status === "false") {
+      query.status = false;
+    }
+
+    // Filter theo ngày tạo
     if (from || to) {
       query.createdAt = {};
       if (from) query.createdAt.$gte = new Date(from);
@@ -43,6 +52,7 @@ export const getTodos = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
 
 // UPDATE
 export const updateTodo = async (req, res) => {
