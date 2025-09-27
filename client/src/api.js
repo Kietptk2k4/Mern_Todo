@@ -1,7 +1,6 @@
-// client/src/api.js
 import axios from "axios";
 
-// Lấy API_BASE từ file .env (Vercel/Netlify sẽ inject biến này)
+// Lấy API_BASE từ file .env
 const API_BASE = import.meta.env.VITE_API_BASE;
 
 const api = axios.create({

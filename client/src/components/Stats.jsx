@@ -1,20 +1,12 @@
+import React from "react";   // 🟢 thêm dòng này
+import api from "../api";
 import { useEffect, useState } from "react";
-import axios from "axios";
 
-export default function Stats() {
-  const [stats, setStats] = useState({ completed: 0, notCompleted: 0 });
-
-  useEffect(() => {
-    axios.get("http://localhost:5000/api/todos/stats").then((res) => {
-      setStats(res.data);
-    });
-  }, []);
-
+export default function Stats({ completed, pending }) {
   return (
-    <div>
-      <h2>📊 Thống kê</h2>
-      <p>Hoàn thành: {stats.completed}</p>
-      <p>Chưa hoàn thành: {stats.notCompleted}</p>
+    <div className="flex justify-around mb-6 text-lg">
+      <span className="text-green-600 font-semibold">✔ Hoàn thành: {completed}</span>
+      <span className="text-red-600 font-semibold">⏳ Chưa xong: {pending}</span>
     </div>
   );
 }
