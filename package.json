@@ -2,14 +2,16 @@
   "name": "mern-todo",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "tw:init": "tailwindcss init -p" 
+    "tw:init": "tailwindcss init -p" ,
+    "start": "node server.js"
+
   },
   "keywords": [],
   "author": "",
